@@ -3,6 +3,7 @@ import { JsonUtil } from "./json-util";
 import { NetUtil } from "./net-util";
 import { RetryUtil } from "./retry-util";
 import { PathUtil } from "./path-util";
+import { StringUtil } from "./string-util";
 import { FileUtilException } from "./exception/file-util-exception";
 import { NetUtilException } from "./exception/net-util-exception";
 import { JsonUtilException } from "./exception/json-util-exception";
@@ -15,6 +16,7 @@ export {
     NetUtil,
     RetryUtil,
     PathUtil,
+    StringUtil,
     FileUtilException,
     NetUtilException,
     JsonUtilException,
