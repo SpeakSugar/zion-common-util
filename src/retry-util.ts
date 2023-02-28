@@ -14,7 +14,7 @@ export class RetryUtil {
         max?: number;
         timeout?: number;
         interval?: number;
-    } = {}): Promise<T | undefined> {
+    } = {}): Promise<T> {
         let logger: Logger = log4js.getLogger();
         let max = 10;
         let interval = 1e3;
@@ -41,6 +41,9 @@ export class RetryUtil {
             } else {
                 throw new RetryUtilException(`retry failed in ${max * interval} ms`, err);
             }
+        } else {
+            // this code not execute, just prevent return value to be 'undefined'
+            return cb();
         }
     }
 
