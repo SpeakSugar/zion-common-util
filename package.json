@@ -1,6 +1,7 @@
 {
   "name": "zion-common-utils",
-  "version": "1.0.1",
+  "version": "1.0.3",
+  "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
     "dist"
@@ -18,9 +19,9 @@
   "dependencies": {
     "axios": "^0.21.0",
     "bluebird": "^3.7.2",
+    "log4js": "6.7.1",
     "make-error-cause": "^2.3.0",
     "typescript": "4.7.2",
-    "yargs": "^16.1.1",
-    "log4js": "6.7.1"
+    "yargs": "^16.1.1"
   }
 }

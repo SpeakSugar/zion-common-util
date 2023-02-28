@@ -36,7 +36,11 @@ export class RetryUtil {
             }
         }
         if (err) {
-            throw new RetryUtilException("retry failed", err);
+            if (option.timeout) {
+                throw new RetryUtilException(`retry failed in ${option.timeout} ms`, err);
+            } else {
+                throw new RetryUtilException(`retry failed in ${max * interval} ms`, err);
+            }
         }
     }
 
