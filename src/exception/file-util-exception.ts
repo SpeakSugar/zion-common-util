@@ -1,9 +1,9 @@
-import { BaseError, fullStack } from "make-error-cause";
+import { BaseException } from "./base-exception";
 
-export class FileUtilException extends BaseError {
+export class FileUtilException extends BaseException {
 
-    constructor(message?: string, cause?: Error) {
-        super(message, cause);
+    constructor(input?: any, cause?: Error) {
+        super(input, cause);
     }
 
 }

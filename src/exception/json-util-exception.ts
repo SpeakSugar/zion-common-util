@@ -1,8 +1,8 @@
-import { BaseError, fullStack } from "make-error-cause";
+import { BaseException } from "./base-exception";
 
-export class JsonUtilException extends BaseError {
+export class JsonUtilException extends BaseException {
 
-    constructor(message?: string, cause?: Error) {
+    constructor(message?: any, cause?: Error) {
         super(message, cause);
     }
 

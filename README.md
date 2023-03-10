@@ -55,3 +55,9 @@ import { FileUtil } from "zion-common-utils";
 
 FileUtil.download(url, dir);
 ```
+
+sleep
+
+```typescript
+
+```

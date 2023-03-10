@@ -1,9 +1,8 @@
-import { BaseError } from "make-error-cause";
+import { BaseException } from "./base-exception";
 
-export class PathUtilException extends BaseError {
+export class PathUtilException extends BaseException {
 
-    constructor(message?: string, cause?: Error) {
+    constructor(message?: any, cause?: Error) {
         super(message, cause);
     }
-
 }
