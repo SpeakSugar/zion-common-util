@@ -59,5 +59,7 @@ FileUtil.download(url, dir);
 sleep
 
 ```typescript
+import { PromiseUtil } from "./promise-util";
 
+PromiseUtil.sleep(3e3);
 ```
