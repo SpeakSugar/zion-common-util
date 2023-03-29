@@ -41,7 +41,12 @@ export class FileUtil {
      * @param dir
      */
     static deleteFilesBefore7Days(dir: string) {
-        let files = fs.readdirSync(dir);
+        let files: string[];
+        try {
+            files = fs.readdirSync(dir);
+        } catch (e) {
+            files = [];
+        }
         const cutoffTime = Date.now() - 7 * 24 * 60 * 60 * 1000; // 7天前的时间戳
         files.forEach((file) => {
             const filePath = path.join(dir, file);
