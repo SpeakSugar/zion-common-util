@@ -17,19 +17,19 @@ retry
 ```typescript
 import { RetryUtil } from "zion-common-utils";
 
-RetryUtil.retry(fn, { timeout: 5e3 })
+await RetryUtil.retry(fn, { timeout: 5e3 })
 ```
 
 ```typescript
 import { RetryUtil } from "zion-common-utils";
 
-RetryUtil.retry(fn, { timeout: 5e3, interval: 2e3 })
+await RetryUtil.retry(fn, { timeout: 5e3, interval: 2e3 })
 ```
 
 ```typescript
 import { RetryUtil } from "zion-common-utils";
 
-RetryUtil.retry(fn, { max: 10, interval: 2e3 })
+await RetryUtil.retry(fn, { max: 10, interval: 2e3 })
 ```
 
 get ip
@@ -37,7 +37,7 @@ get ip
 ```typescript
 import { NetUtil } from "zion-common-utils";
 
-let ip: string = NetUtil.getLocalIp();
+let ip: string = await NetUtil.getLocalIp();
 ```
 
 json format
@@ -53,7 +53,14 @@ file download
 ```typescript
 import { FileUtil } from "zion-common-utils";
 
-FileUtil.download(url, dir);
+await FileUtil.download(url, dir);
+```
+
+delete files before 7 days
+```typescript
+import { FileUtil } from "zion-common-utils";
+
+FileUtil.deleteFilesBefore7Days(dir);
 ```
 
 sleep
@@ -61,5 +68,5 @@ sleep
 ```typescript
 import { PromiseUtil } from "./promise-util";
 
-PromiseUtil.sleep(3e3);
+await PromiseUtil.sleep(3e3);
 ```
