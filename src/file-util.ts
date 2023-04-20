@@ -37,7 +37,7 @@ export class FileUtil {
     }
 
     /**
-     * Example: FileUtil.deleteFilesBefore7Days('/Users/jeffries.yu/selenium-federation-server/logs')
+     * Example: await FileUtil.deleteFilesBefore7Days('/Users/jeffries.yu/selenium-federation-server/logs')
      * @param dir
      */
     static async deleteFilesBefore7Days(dir: string) {
@@ -59,6 +59,15 @@ export class FileUtil {
                     retryDelay: 2e3
                 });
             }
+        }
+    }
+
+    static async isExist(file: string): Promise<boolean> {
+        try {
+            await fs.promises.access(file, fs.constants.F_OK);
+            return true;
+        } catch (error) {
+            return false;
         }
     }
 
