@@ -44,7 +44,7 @@ file-util
 import { FileUtil } from "zion-common-utils";
 
 await FileUtil.download(url, dir);
-FileUtil.deleteFilesBefore7Days(dir);
+await FileUtil.deleteFilesBefore7Days(dir);
 ```
 
 gitlab-util

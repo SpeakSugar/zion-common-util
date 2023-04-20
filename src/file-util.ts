@@ -40,26 +40,26 @@ export class FileUtil {
      * Example: FileUtil.deleteFilesBefore7Days('/Users/jeffries.yu/selenium-federation-server/logs')
      * @param dir
      */
-    static deleteFilesBefore7Days(dir: string) {
+    static async deleteFilesBefore7Days(dir: string) {
         let files: string[];
         try {
-            files = fs.readdirSync(dir);
+            files = await fs.promises.readdir(dir);
         } catch (e) {
             files = [];
         }
         const cutoffTime = Date.now() - 7 * 24 * 60 * 60 * 1000; // 7天前的时间戳
-        files.forEach((file) => {
+        for (const file of files) {
             const filePath = path.join(dir, file);
-            const stats = fs.statSync(filePath);
+            const stats = await fs.promises.stat(filePath);
             if (stats.mtime.getTime() < cutoffTime) {
-                fs.rmSync(filePath, {
+                await fs.promises.rm(filePath, {
                     recursive: true,
                     force: true,
                     maxRetries: 3,
                     retryDelay: 2e3
                 });
             }
-        });
+        }
     }
 
 }
