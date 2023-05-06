@@ -5,11 +5,13 @@ import { RetryUtil } from "./retry-util";
 import { PathUtil } from "./path-util";
 import { StringUtil } from "./string-util";
 import { GitlabUtil } from "./gitlab-util";
+import { ProcessUtil } from "./process-util";
 import { FileUtilException } from "./exception/file-util-exception";
 import { NetUtilException } from "./exception/net-util-exception";
 import { JsonUtilException } from "./exception/json-util-exception";
 import { PathUtilException } from "./exception/path-util-exception";
 import { RetryUtilException } from "./exception/retry-util-exception";
+import { ProcessUtilException } from "./exception/process-util-exception";
 
 export {
     FileUtil,
@@ -19,9 +21,11 @@ export {
     PathUtil,
     StringUtil,
     GitlabUtil,
+    ProcessUtil,
     FileUtilException,
     NetUtilException,
     JsonUtilException,
     PathUtilException,
-    RetryUtilException
+    RetryUtilException,
+    ProcessUtilException
 };

@@ -84,3 +84,11 @@ StringUtil.substringToFirstChar(origin, char);
 StringUtil.substringFromLastChar(origin, char);
 StringUtil.substringFromFirstChar(origin, char);
 ```
+
+process-util
+
+```typescript
+import { ProcessUtil } from "./process-util";
+
+const stdout = await ProcessUtil.exec(command, options)
+```

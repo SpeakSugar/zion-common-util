@@ -1,6 +1,6 @@
-import { BaseException } from "./base-exception";
+import Errlop from "errlop";
 
-export class RetryUtilException extends BaseException {
+export class RetryUtilException extends Errlop {
 
     constructor(message?: any, cause?: Error) {
         super(message, cause);
