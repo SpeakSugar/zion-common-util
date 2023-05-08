@@ -46,6 +46,7 @@ import { FileUtil } from "zion-common-utils";
 await FileUtil.download(url, dir);
 await FileUtil.deleteFilesBefore7Days(dir);
 const isExist = await FileUtil.isExist(file);
+const files = await FileUtil.readAndSortFiles(dir);
 ```
 
 gitlab-util

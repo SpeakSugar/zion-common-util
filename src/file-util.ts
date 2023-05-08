@@ -71,4 +71,21 @@ export class FileUtil {
         }
     }
 
+    /**
+     * read files from dir， order by create time
+     * @param dir
+     */
+    static async readAndSortFiles(dir: string): Promise<fs.Dirent[]> {
+        const files = await fs.promises.readdir(dir, { withFileTypes: true });
+        const fileStats = await Promise.all(files.map(file => {
+            const filepath = path.join(dir, file.name);
+            return fs.promises.stat(filepath).then(stats => ({
+                file,
+                createdTime: stats.birthtimeMs
+            }));
+        }));
+        const sortedFiles = fileStats.sort((a, b) => b.createdTime - a.createdTime);
+        return sortedFiles.map(file => file.file);
+    }
+
 }

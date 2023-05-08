@@ -8,3 +8,9 @@ it('isExist', async function () {
     const isExist = await FileUtil.isExist('/Users/jeffries.yu/selenium-federation-server/logs/2023-04-20/mainx.log');
     console.log(isExist);
 }, 30000);
+
+it('readAndSortFiles', async function () {
+    let files = await FileUtil.readAndSortFiles('/Users/jeffries.yu/Downloads');
+    let fileNames = files.map(f => f.name + (f.isDirectory() ? '/' : ''));
+    console.log(fileNames);
+}, 30000);
