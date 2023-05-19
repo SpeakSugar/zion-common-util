@@ -70,7 +70,7 @@ PathUtil.getAbsolutePath(relativePath);
 promise-util
 
 ```typescript
-import { PromiseUtil } from "./promise-util";
+import { PromiseUtil } from "zion-common-utils";
 
 await PromiseUtil.sleep(3e3);
 ```
@@ -89,7 +89,15 @@ StringUtil.substringFromFirstChar(origin, char);
 process-util
 
 ```typescript
-import { ProcessUtil } from "./process-util";
+import { ProcessUtil } from "zion-common-utils";
 
 const stdout = await ProcessUtil.exec(command, options)
+```
+
+array-util
+
+```typescript
+import { ArrayUtil } from "zion-common-utils";
+
+const new_arr = ArrayUtil.deDuplicateX(arr, [str, str])
 ```

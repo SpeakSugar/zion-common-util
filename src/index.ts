@@ -6,6 +6,7 @@ import { PathUtil } from "./path-util";
 import { StringUtil } from "./string-util";
 import { GitlabUtil } from "./gitlab-util";
 import { ProcessUtil } from "./process-util";
+import { ArrayUtil } from "./array-util";
 import { FileUtilException } from "./exception/file-util-exception";
 import { NetUtilException } from "./exception/net-util-exception";
 import { JsonUtilException } from "./exception/json-util-exception";
@@ -22,6 +23,7 @@ export {
     StringUtil,
     GitlabUtil,
     ProcessUtil,
+    ArrayUtil,
     FileUtilException,
     NetUtilException,
     JsonUtilException,
