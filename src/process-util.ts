@@ -4,8 +4,7 @@ import { ProcessUtilException } from "./exception/process-util-exception";
 
 export class ProcessUtil {
 
-    public static async exec(command: string, options?:
-        { encoding: 'buffer' | null; } & ExecOptions): Promise<string> {
+    public static async exec(command: string, options?: ExecOptions): Promise<string> {
         let p_exec = util.promisify(exec);
         try {
             let { stdout, stderr } = options ? await p_exec(command, options) : await p_exec(command);

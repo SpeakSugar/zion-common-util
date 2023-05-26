@@ -1,6 +1,8 @@
-import { ProcessUtil } from "../src/process-util";
+import { ProcessUtil } from "../src";
 
 it('process util test', async function () {
-    let stdout = await ProcessUtil.exec(`fscvsev`);
+    let stdout = await ProcessUtil.exec(`ls`, {
+        timeout: 60e3
+    });
     console.log(stdout);
 }, 10e3);
