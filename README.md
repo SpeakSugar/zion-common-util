@@ -73,6 +73,7 @@ promise-util
 import { PromiseUtil } from "zion-common-utils";
 
 await PromiseUtil.sleep(3e3);
+await PromiseUtil.withTimeout(fn, 30e3);
 ```
 
 string-util
