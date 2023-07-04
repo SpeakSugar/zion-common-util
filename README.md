@@ -102,3 +102,11 @@ import { ArrayUtil } from "zion-common-utils";
 
 const new_arr = ArrayUtil.deDuplicateX(arr, [str, str])
 ```
+
+barrier
+
+```typescript
+import { Barrier } from "zion-common-utils";
+
+// use GPT to get how to use barrier
+```

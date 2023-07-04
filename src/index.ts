@@ -14,6 +14,7 @@ import { JsonUtilException } from "./exception/json-util-exception";
 import { PathUtilException } from "./exception/path-util-exception";
 import { RetryUtilException } from "./exception/retry-util-exception";
 import { ProcessUtilException } from "./exception/process-util-exception";
+import { Barrier } from "./event-loop/barrier";
 
 export {
     FileUtil,
@@ -31,5 +32,6 @@ export {
     JsonUtilException,
     PathUtilException,
     RetryUtilException,
-    ProcessUtilException
+    ProcessUtilException,
+    Barrier
 };
