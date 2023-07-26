@@ -7,6 +7,7 @@ import { StringUtil } from "./string-util";
 import { GitlabUtil } from "./gitlab-util";
 import { ProcessUtil } from "./process-util";
 import { PromiseUtil } from "./promise-util";
+import { FuncUtil } from "./func-util";
 import { ArrayUtil } from "./array-util";
 import { FileUtilException } from "./exception/file-util-exception";
 import { NetUtilException } from "./exception/net-util-exception";
@@ -27,6 +28,7 @@ export {
     ProcessUtil,
     PromiseUtil,
     ArrayUtil,
+    FuncUtil,
     FileUtilException,
     NetUtilException,
     JsonUtilException,

@@ -103,6 +103,14 @@ import { ArrayUtil } from "zion-common-utils";
 const new_arr = ArrayUtil.deDuplicateX(arr, [str, str])
 ```
 
+func-util
+
+```typescript
+import { FuncUtil } from "zion-common-utils";
+
+await FuncUtil.ignoreError(async () => {});
+```
+
 barrier
 
 ```typescript
