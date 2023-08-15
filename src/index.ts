@@ -9,6 +9,7 @@ import { ProcessUtil } from "./process-util";
 import { PromiseUtil } from "./promise-util";
 import { FuncUtil } from "./func-util";
 import { ArrayUtil } from "./array-util";
+import { DeepPartial } from "./type-util";
 import { FileUtilException } from "./exception/file-util-exception";
 import { NetUtilException } from "./exception/net-util-exception";
 import { JsonUtilException } from "./exception/json-util-exception";
@@ -35,5 +36,6 @@ export {
     PathUtilException,
     RetryUtilException,
     ProcessUtilException,
-    Barrier
+    Barrier,
+    DeepPartial
 };
