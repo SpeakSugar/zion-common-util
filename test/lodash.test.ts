@@ -47,3 +47,7 @@ it('memoize', () => {
     console.log(memoizedFunc(2, 3)); // 执行并缓存结果
     console.log(memoizedFunc(2, 3)); // 从缓存中获取结果，避免重复计算
 });
+
+it('boolean test', function () {
+    console.log(`${JSON.parse("false")}`)
+});
