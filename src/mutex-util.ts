@@ -1,10 +1,10 @@
-export class MutexUtil<K> {
+export class MutexUtil {
 
-    private map = new Map<K, Semaphore>();
+    private static map = new Map<string, Semaphore>();
 
     constructor() { }
 
-    async lock(key: K) {
+    static async lock(key: string) {
         let sempahore = this.map.get(key);
         if (!sempahore) {
             sempahore = new Semaphore(1);
@@ -13,7 +13,7 @@ export class MutexUtil<K> {
         await sempahore.wait();
     }
 
-    release(key: K) {
+    static release(key: string) {
         const sempahore = this.map.get(key);
         if (!sempahore) {
             throw Error(`key: ${key} has not been locked`)
@@ -24,7 +24,7 @@ export class MutexUtil<K> {
         }
     }
 
-    getPending(key: K) {
+    static getPending(key: string) {
         const sempahore = this.map.get(key);
         return sempahore ? (1 - sempahore.size) : 0;
     }
