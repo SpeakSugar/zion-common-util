@@ -8,6 +8,7 @@ import { GitlabUtil } from "./gitlab-util";
 import { ProcessUtil } from "./process-util";
 import { PromiseUtil } from "./promise-util";
 import { FuncUtil } from "./func-util";
+import { RandomUtil } from "./random-util";
 import { ArrayUtil } from "./array-util";
 import { DeepPartial } from "./type-util";
 import { FileUtilException } from "./exception/file-util-exception";
@@ -30,6 +31,7 @@ export {
     PromiseUtil,
     ArrayUtil,
     FuncUtil,
+    RandomUtil,
     FileUtilException,
     NetUtilException,
     JsonUtilException,
