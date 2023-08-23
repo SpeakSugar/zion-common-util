@@ -9,6 +9,7 @@ import { ProcessUtil } from "./process-util";
 import { PromiseUtil } from "./promise-util";
 import { FuncUtil } from "./func-util";
 import { RandomUtil } from "./random-util";
+import { AxiosUtil } from "./axios-util";
 import { MutexUtil } from "./mutex-util";
 import { ArrayUtil } from "./array-util";
 import { DeepPartial } from "./type-util";
@@ -33,6 +34,7 @@ export {
     ArrayUtil,
     FuncUtil,
     RandomUtil,
+    AxiosUtil,
     MutexUtil,
     FileUtilException,
     NetUtilException,
