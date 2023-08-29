@@ -18,10 +18,10 @@ export class MutexUtil {
         if (!sempahore) {
             throw Error(`key: ${key} has not been locked`)
         }
-        sempahore.signal();
-        if (1 === sempahore.size) {
+        if (0 === sempahore.queue.length) {
             this.map.delete(key);  // remove keyword when lock is free, or else will have memory leak
         }
+        sempahore.signal();
     }
 
     static getPending(key: string) {

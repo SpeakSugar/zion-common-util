@@ -1,4 +1,5 @@
 import { FileUtil } from "../src";
+import { assignWith } from "lodash";
 
 it('deleteFilesBefore7Days', async function () {
     await FileUtil.deleteFilesBefore7Days('/Users/jeffries.yu/selenium-federation-server/logs');
@@ -14,3 +15,7 @@ it('readAndSortFiles', async function () {
     let fileNames = files.map(f => f.name + (f.isDirectory() ? '/' : ''));
     console.log(fileNames);
 }, 30000);
+
+it('download', async function () {
+    await FileUtil.download(`https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/116.0.5845.96/mac-x64/chromedriver-mac-x64.zip`, `~/`)
+});

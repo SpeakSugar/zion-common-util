@@ -4,7 +4,6 @@ import { ProcessUtilException } from "./exception/process-util-exception";
 
 export class ProcessUtil {
 
-    // it's important to add timeout in some command, otherwise command will failed
     public static async exec(command: string, options?: ExecOptions): Promise<string> {
         let p_exec = util.promisify(exec);
         try {
