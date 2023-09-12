@@ -111,6 +111,14 @@ import { FuncUtil } from "zion-common-utils";
 await FuncUtil.ignoreError(async () => {});
 ```
 
+singleton-factory
+
+```typescript
+import { SingletonFactory } from "zion-common-utils";
+
+const person = SingletonFactory.getInstance(Person);
+```
+
 barrier
 
 ```typescript
