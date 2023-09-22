@@ -1,13 +1,23 @@
 {
   "name": "zion-common-utils",
-  "version": "1.2.6",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "version": "1.2.7",
+  "main": "./zion-commonjs/index.js",
+  "types": "./zion-commonjs/index.d.ts",
+  "exports": {
+    "node": {
+      "require": "./zion-commonjs/index.js"
+    },
+    "browser": {
+      "import": "./zion-esm/index.js"
+    }
+  },
   "files": [
-    "dist"
+    "zion-commonjs",
+    "zion-esm"
   ],
   "scripts": {
-    "zion-tsc": "tsc"
+    "zion-tsc": "tsc --outDir ./zion-commonjs",
+    "zion-tsc-esm": "tsc --module ESNext --outDir ./zion-esm"
   },
   "devDependencies": {
     "@types/bluebird": "^3.5.33",
