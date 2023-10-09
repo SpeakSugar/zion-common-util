@@ -13,6 +13,7 @@ import { AxiosUtil } from "./axios-util";
 import { MutexUtil } from "./mutex-util";
 import { ArrayUtil } from "./array-util";
 import { DeepPartial } from "./type-util";
+import { TimeUtil } from "./time-util";
 import { SingletonFactory } from "./singleton-factory";
 import { FileUtilException } from "./exception/file-util-exception";
 import { NetUtilException } from "./exception/net-util-exception";
@@ -37,6 +38,7 @@ export {
     RandomUtil,
     AxiosUtil,
     MutexUtil,
+    TimeUtil,
     SingletonFactory,
     FileUtilException,
     NetUtilException,
