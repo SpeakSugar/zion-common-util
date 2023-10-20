@@ -51,3 +51,9 @@ it('memoize', () => {
 it('boolean test', function () {
     console.log(`${JSON.parse("false")}`)
 });
+
+it('|| test', function () {
+    const x = false;
+    const y = undefined;
+    console.log(x || y);
+});
