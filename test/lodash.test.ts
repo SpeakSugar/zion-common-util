@@ -1,4 +1,5 @@
 import * as _ from "lodash";
+import { StringUtil } from "../src";
 
 it('_.isEqual', function () {
     const obj1 = {
@@ -56,4 +57,14 @@ it('|| test', function () {
     const x = false;
     const y = undefined;
     console.log(x || y);
+});
+
+it('regex test', function () {
+    let regex = "[.+]";
+    const text = "Hello, world!";
+    if (regex.indexOf("[") == 0) {
+        regex = StringUtil.substringFromFirstChar(regex, '[');
+        regex = StringUtil.substringToLastChar(regex, ']');
+        console.log(text.match(new RegExp(regex, "g"))![0]);
+    }
 });
