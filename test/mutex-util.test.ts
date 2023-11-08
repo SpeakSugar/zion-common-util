@@ -6,7 +6,11 @@ it(`mutex test`, async () => {
         console.log(`release success`);
     }, 5e3);
     await MutexUtil.lock(`no lockUUID`);
+    console.log(MutexUtil['map']);
     await MutexUtil.lock(`no lockUUID`);
-    MutexUtil.release(`no lockUUID`);
+
+    // ==== wait 5s ====
     console.log(`fxxk mutex`);
+    MutexUtil.release(`no lockUUID`);
+    console.log(MutexUtil['map']);
 }, 20e3);
