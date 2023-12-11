@@ -59,6 +59,11 @@ it('|| test', function () {
     console.log(x || y);
 });
 
+it('string test', () => {
+    const s = String(124143);
+    console.log(s);
+});
+
 it('regex test', function () {
     let regex = "[.+]";
     const text = "Hello, world!";
