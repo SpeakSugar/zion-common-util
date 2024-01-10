@@ -1,8 +1,21 @@
 import { NetworkInterfaceInfo } from "os";
 import * as os from "os";
 import { NetUtilException } from "./exception/net-util-exception";
+import { AxiosUtil } from "./axios-util";
 
 export class NetUtil {
+
+    static async isConnected(url: string): Promise<boolean> {
+        try {
+            const status = (await AxiosUtil.request({
+                url: url,
+                method: 'GET',
+            })).status;
+            return status == 200;
+        } catch (e) {
+            return false;
+        }
+    }
 
     static getLocalIp(): string {
         let interfaces: NodeJS.Dict<NetworkInterfaceInfo[]> = os.networkInterfaces()

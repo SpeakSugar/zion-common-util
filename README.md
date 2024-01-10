@@ -28,6 +28,8 @@ net-util
 import { NetUtil } from "zion-common-utils";
 
 let ip: string = await NetUtil.getLocalIp();
+
+let isConnected: boolean = await NetUtil.isConnected(`https://www.baidu.com`);
 ```
 
 json-util
