@@ -1,5 +1,6 @@
 import * as _ from "lodash";
 import { StringUtil } from "../src";
+import { JsonUtil } from "../src";
 
 it('_.isEqual', function () {
     const obj1 = {
@@ -73,3 +74,53 @@ it('regex test', function () {
         console.log(text.match(new RegExp(regex, "g"))![0]);
     }
 });
+
+it('merge test', () => {
+    const a = {
+        name: 'xiaox',
+        age: 9,
+    };
+    const b = {
+        name: 'dcccc',
+        high: 18,
+    }
+    const mergedObj = _.merge(a, b);
+    console.log(`merged obj = ${JsonUtil.format(mergedObj)}`);
+    //  {
+    //       "name": "dcccc",
+    //       "age": 9,
+    //       "high": 18
+    //  }
+});
+
+it('isMatch test', () => {
+    const a = {
+        "autostart-enabled": true,
+        "autostart-silently-enabled": false,
+        "user-login": false,
+        "zoom-factor": 1,
+        "persist-sentry-url": "",
+        "notificationsRequested": true,
+        "lazy-load-zoom": true,
+        "web-app-config": {
+            "domain": "https://mfe_a-mr-feature-fiji-71869.fiji.gliprc.com",
+            "mode": "default"
+        },
+    };
+
+    const b = {
+        "web-app-config": {
+            "domain": "https://mfe_a-mr-feature-fiji-71869.fiji.gliprc.com",
+            "mode": "default"
+        },
+    }
+
+    console.log(`isMatch = ${_.isMatch(a, b)}`);
+});
+
+it(`regex test 2`, function () {
+    let s = "https://cdn.cookielaw.org/consent/f2e9ce78-29e0-42d2-91d6-9731c9570322-test/OtAutoBlock.js"
+    if (!(s as any == true)) {
+        console.log(`fxxk`);
+    }
+})
