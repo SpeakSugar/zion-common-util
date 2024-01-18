@@ -44,10 +44,10 @@ export class SystemUtil {
             }
             if (this.getPlatformName() == `win`) {
                 const result = await ProcessUtil.exec(`systeminfo | findstr /B /C:\"OS Name\"`);
-                return result.replace(`OS Name`, ``);
+                return result.replace(`OS Name`, ``).trim();
             }
         } catch (e) {
-            return `unknown`;
+            return `get platform version exception`;
         }
         return `unsupported os: ${this.getPlatformName()}`;
     }
@@ -55,6 +55,104 @@ export class SystemUtil {
     static async currentUser() {
         let result = await ProcessUtil.exec(`echo $HOME`);
         return StringUtil.substringFromLastChar(result, '/').replace('\n', ``);
+    }
+
+    static async getChromeVersion() {
+        try {
+            if (this.getPlatformName() == `mac`) {
+                const result = await ProcessUtil.exec(`'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --version`);
+                return result.trim().substring("Google Chrome".length).trim();
+            }
+            if (this.getPlatformName() == `win`) {
+                let result = await ProcessUtil.exec(`'wmic datafile where name=\"C:\\\\Program Files\\\\Google\\\\Chrome\\\\Application\\\\chrome.exe\" get Version /value`);
+                if (result.includes(`No`)) {
+                    result = await ProcessUtil.exec(`'wmic datafile where name=\"C:\\\\Program Files (x86)\\\\Google\\\\Chrome\\\\Application\\\\chrome.exe\" get Version /value`);
+                }
+                return result.trim().substring("Version=".length).trim();
+            }
+        } catch (e) {
+            return `get chrome version exception`;
+        }
+        return `unsupported os: ${this.getPlatformName()}`;
+    }
+
+    static async getChromeBetaVersion() {
+        try {
+            if (this.getPlatformName() == `mac`) {
+                const result = await ProcessUtil.exec(`'/Applications/Google Chrome Beta.app/Contents/MacOS/Google Chrome Beta' --version`);
+                return result.trim().substring("Google Chrome".length).trim();
+            }
+            if (this.getPlatformName() == `win`) {
+                let result = await ProcessUtil.exec(`'wmic datafile where name=\"C:\\\\Program Files\\\\Google\\\\Chrome Beta\\\\Application\\\\chrome.exe\" get Version /value`);
+                if (result.includes(`No`)) {
+                    result = await ProcessUtil.exec(`'wmic datafile where name=\"C:\\\\Program Files (x86)\\\\Google\\\\Chrome Beta\\\\Application\\\\chrome.exe\" get Version /value`);
+                }
+                return result.trim().substring("Version=".length).trim();
+            }
+        } catch (e) {
+            return `get chrome beta version exception`;
+        }
+        return `unsupported os: ${this.getPlatformName()}`;
+    }
+
+    static async getEdgeVersion() {
+        try {
+            if (this.getPlatformName() == `mac`) {
+                const result = await ProcessUtil.exec(`'/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge' --version`);
+                return result.trim().substring("Microsoft Edge".length).trim();
+            }
+            if (this.getPlatformName() == `win`) {
+                let result = await ProcessUtil.exec(`reg query "HKEY_CURRENT_USER\\Software\\Microsoft\\Edge\\BLBeacon" /v version`);
+                return result.match(new RegExp(/\d+\.\d+\.\d+\.\d+/))![0]
+            }
+        } catch (e) {
+            return `get edge version exception`;
+        }
+        return `unsupported os: ${this.getPlatformName()}`;
+    }
+
+    static async getElectronVersion() {
+        try {
+            if (this.getPlatformName() == `mac`) {
+                return (await ProcessUtil.exec(`/usr/libexec/PlistBuddy -c "Print :CFBundleShortVersionString" /Applications/RingCentral.app/Contents/Info.plist`)).trim();
+            }
+            if (this.getPlatformName() == `win`) {
+                let result = await ProcessUtil.exec(`'wmic datafile where name=\"C:\\\\Program Files\\\\RingCentral\\\\RingCentral.exe\" get Version /value`);
+                if (result.includes(`No`)) {
+                    result = await ProcessUtil.exec(`'wmic datafile where name=\"C:\\\\Program Files (x86)\\\\RingCentral\\\\RingCentral.exe\" get Version /value`);
+                }
+                return result.trim().substring("Version=".length).trim();
+            }
+        } catch (e) {
+            return `get electron version exception`;
+        }
+        return `unsupported os: ${this.getPlatformName()}`;
+    }
+
+    static async getFirefoxVersion() {
+        try {
+            if (this.getPlatformName() == `mac`) {
+                const result = await ProcessUtil.exec(`'/Applications/Firefox.app/Contents/MacOS/firefox' --version`);
+                return result.trim().substring("Mozilla Firefox".length).trim();
+            }
+            if (this.getPlatformName() == `win`) {
+                let result = await ProcessUtil.exec(`'wmic datafile where name=\"C:\\\\Program Files\\\\Mozilla Firefox\\\\firefox.exe\" get Version /value`);
+                if (result.includes(`No`)) {
+                    result = await ProcessUtil.exec(`'wmic datafile where name=\"C:\\\\Program Files (x86)\\\\Mozilla Firefox\\\\firefox.exe\" get Version /value`);
+                }
+                return result.trim().substring("Version=".length).trim();
+            }
+        } catch (e) {
+            return `get firefox version exception`;
+        }
+        return `unsupported os: ${this.getPlatformName()}`;
+    }
+
+    static async getSafariVersion() {
+        if (this.getPlatformName() == `mac`) {
+            return (await ProcessUtil.exec(`defaults read /Applications/Safari.app/Contents/Info.plist CFBundleShortVersionString`)).trim();
+        }
+        return `unsupported os: ${this.getPlatformName()}`;
     }
 
 }

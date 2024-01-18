@@ -103,12 +103,16 @@ system-util
 import { SystemUtil } from "zion-common-utils";
 
 const platformName = await SystemUtil.getPlatformName();
-
 const arch = await SystemUtil.getArch();
-
 const platformVersion = await SystemUtil.getPlatformVersion();
-
 const currentUser = await SystemUtil.currentUser();
+
+const chromeVersion = await SystemUtil.getChromeVersion();
+const chromeBetaVersion = await SystemUtil.getChromeBetaVersion();
+const edgeVersion = await SystemUtil.getEdgeVersion();
+const electronVersion = await SystemUtil.getElectronVersion();
+const firefoxVersion = await SystemUtil.getFirefoxVersion();
+const safariVersion = await SystemUtil.getSafariVersion();
 ```
 
 array-util

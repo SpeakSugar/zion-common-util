@@ -119,8 +119,7 @@ it('isMatch test', () => {
 });
 
 it(`regex test 2`, function () {
-    let s = "https://cdn.cookielaw.org/consent/f2e9ce78-29e0-42d2-91d6-9731c9570322-test/OtAutoBlock.js"
-    if (!(s as any == true)) {
-        console.log(`fxxk`);
-    }
+    let s = "231.123.241.1"
+    const match = s.match(new RegExp(/\d+\.\d+\.\d+\.\d+/))!;
+    console.log(match[0]);
 })
