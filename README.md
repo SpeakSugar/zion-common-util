@@ -97,6 +97,20 @@ import { ProcessUtil } from "zion-common-utils";
 const stdout = await ProcessUtil.exec(command, options)
 ```
 
+system-util
+
+```typescript
+import { SystemUtil } from "zion-common-utils";
+
+const platformName = await SystemUtil.getPlatformName();
+
+const arch = await SystemUtil.getArch();
+
+const platformVersion = await SystemUtil.getPlatformVersion();
+
+const currentUser = await SystemUtil.currentUser();
+```
+
 array-util
 
 ```typescript

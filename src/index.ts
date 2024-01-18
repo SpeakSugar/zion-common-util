@@ -22,6 +22,7 @@ import { PathUtilException } from "./exception/path-util-exception";
 import { RetryUtilException } from "./exception/retry-util-exception";
 import { ProcessUtilException } from "./exception/process-util-exception";
 import { Barrier } from "./event-loop/barrier";
+import { SystemUtil } from "./system-util";
 
 export {
     FileUtil,
@@ -39,6 +40,7 @@ export {
     AxiosUtil,
     MutexUtil,
     TimeUtil,
+    SystemUtil,
     SingletonFactory,
     FileUtilException,
     NetUtilException,
