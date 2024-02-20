@@ -1,6 +1,6 @@
 {
   "name": "zion-common-utils",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "main": "./zion-commonjs/index.js",
   "types": "./zion-commonjs/index.d.ts",
   "exports": {
@@ -22,19 +22,20 @@
   "devDependencies": {
     "@types/bluebird": "^3.5.33",
     "@types/jest": "^23.3.9",
+    "@types/lodash": "^4.14.176",
     "@types/node": "^18.14.0",
     "jest": "^23.4.0",
-    "ts-jest": "^23.10.4",
-    "@types/lodash": "^4.14.176"
+    "ts-jest": "^23.10.4"
   },
   "dependencies": {
     "@fxs0819/git-helper": "1.0.0",
     "axios": "^0.21.0",
     "bluebird": "^3.7.2",
     "errlop": "^4.5.0",
+    "form-data": "^4.0.0",
+    "lodash": "^4.17.20",
     "log4js": "6.7.1",
     "typescript": "4.7.2",
-    "yargs": "^16.1.1",
-    "lodash": "^4.17.20"
+    "yargs": "^16.1.1"
   }
 }

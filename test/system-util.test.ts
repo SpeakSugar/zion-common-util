@@ -4,6 +4,9 @@ it(`getPlatformVersion`, async () => {
     console.log(`${await SystemUtil.getPlatformVersion()}`);
 });
 
+it(`getElectronVersion`, async () => {
+    console.log(`${await SystemUtil.getElectronVersion()}`);
+});
 
 it(`getChromeVersion`, async () => {
     console.log(`${await SystemUtil.getChromeVersion()}`);

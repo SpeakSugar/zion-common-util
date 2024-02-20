@@ -1,6 +1,6 @@
-import axios from "axios";
 import * as fs from "fs";
 import * as path from "path";
+import { AxiosUtil } from "./axios-util";
 
 export class FileUtil {
 
@@ -11,7 +11,11 @@ export class FileUtil {
      * @return destPath
      */
     static async download(url: string, dir: string): Promise<string> {
-        let axiosResponse = await axios.get(url, { responseType: "stream" });
+        let axiosResponse = await AxiosUtil.request({
+            url: url,
+            method: "GET",
+            responseType: "stream"
+        });
         if (!fs.existsSync(dir)) {
             fs.mkdirSync(dir, { recursive: true });
         }
