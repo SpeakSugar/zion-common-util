@@ -1,3 +1,3 @@
-zion-tsc
-zion-tsc-esm
+npm run zion-tsc
+npm run zion-tsc-esm
 npm publish
