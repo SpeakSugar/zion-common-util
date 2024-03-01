@@ -1,5 +1,6 @@
 import axios, { AxiosRequestConfig } from "axios";
 import Errlop from "errlop";
+import { JsonUtil } from "./json-util";
 
 export class AxiosUtil {
 
@@ -9,7 +10,7 @@ export class AxiosUtil {
             return await axios.request(config);
         } catch (e) {
             if (e.response) {
-                throw new Errlop(`${e.response.data}`, e);
+                throw new Errlop(`${JsonUtil.format(e.response.data)}`, e);
             } else {
                 throw new Errlop(e);
             }

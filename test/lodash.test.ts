@@ -119,7 +119,12 @@ it('isMatch test', () => {
 });
 
 it(`regex test 2`, function () {
-    let s = "231.123.241.1"
+    let s = "231.123.241.1xxxx"
     const match = s.match(new RegExp(/\d+\.\d+\.\d+\.\d+/))!;
     console.log(match[0]);
+})
+
+it(`regex test 3`, function () {
+    let s = "xxxx john.doeyyyy"
+    console.log(/John[\\. ]Doe/i.test(s));
 })
