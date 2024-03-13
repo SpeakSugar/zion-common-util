@@ -64,9 +64,9 @@ export class SystemUtil {
                 return result.trim().substring("Google Chrome".length).trim();
             }
             if (this.getPlatformName() == `win`) {
-                let result = await ProcessUtil.exec(`'wmic datafile where name=\"C:\\\\Program Files\\\\Google\\\\Chrome\\\\Application\\\\chrome.exe\" get Version /value`);
+                let result = await ProcessUtil.exec(`wmic datafile where name=\"C:\\\\Program Files\\\\Google\\\\Chrome\\\\Application\\\\chrome.exe\" get Version /value`);
                 if (result.includes(`No`)) {
-                    result = await ProcessUtil.exec(`'wmic datafile where name=\"C:\\\\Program Files (x86)\\\\Google\\\\Chrome\\\\Application\\\\chrome.exe\" get Version /value`);
+                    result = await ProcessUtil.exec(`wmic datafile where name=\"C:\\\\Program Files (x86)\\\\Google\\\\Chrome\\\\Application\\\\chrome.exe\" get Version /value`);
                 }
                 return result.trim().substring("Version=".length).trim();
             }
@@ -83,9 +83,9 @@ export class SystemUtil {
                 return result.trim().substring("Google Chrome".length).trim();
             }
             if (this.getPlatformName() == `win`) {
-                let result = await ProcessUtil.exec(`'wmic datafile where name=\"C:\\\\Program Files\\\\Google\\\\Chrome Beta\\\\Application\\\\chrome.exe\" get Version /value`);
+                let result = await ProcessUtil.exec(`wmic datafile where name=\"C:\\\\Program Files\\\\Google\\\\Chrome Beta\\\\Application\\\\chrome.exe\" get Version /value`);
                 if (result.includes(`No`)) {
-                    result = await ProcessUtil.exec(`'wmic datafile where name=\"C:\\\\Program Files (x86)\\\\Google\\\\Chrome Beta\\\\Application\\\\chrome.exe\" get Version /value`);
+                    result = await ProcessUtil.exec(`wmic datafile where name=\"C:\\\\Program Files (x86)\\\\Google\\\\Chrome Beta\\\\Application\\\\chrome.exe\" get Version /value`);
                 }
                 return result.trim().substring("Version=".length).trim();
             }
@@ -117,9 +117,9 @@ export class SystemUtil {
                 return (await ProcessUtil.exec(`/usr/libexec/PlistBuddy -c "Print :CFBundleShortVersionString" /Applications/RingCentral.app/Contents/Info.plist`)).trim();
             }
             if (this.getPlatformName() == `win`) {
-                let result = await ProcessUtil.exec(`'wmic datafile where name=\"C:\\\\Program Files\\\\RingCentral\\\\RingCentral.exe\" get Version /value`);
+                let result = await ProcessUtil.exec(`wmic datafile where name=\"C:\\\\Program Files\\\\RingCentral\\\\RingCentral.exe\" get Version /value`);
                 if (result.includes(`No`)) {
-                    result = await ProcessUtil.exec(`'wmic datafile where name=\"C:\\\\Program Files (x86)\\\\RingCentral\\\\RingCentral.exe\" get Version /value`);
+                    result = await ProcessUtil.exec(`wmic datafile where name=\"C:\\\\Program Files (x86)\\\\RingCentral\\\\RingCentral.exe\" get Version /value`);
                 }
                 return result.trim().substring("Version=".length).trim();
             }
@@ -136,9 +136,9 @@ export class SystemUtil {
                 return result.trim().substring("Mozilla Firefox".length).trim();
             }
             if (this.getPlatformName() == `win`) {
-                let result = await ProcessUtil.exec(`'wmic datafile where name=\"C:\\\\Program Files\\\\Mozilla Firefox\\\\firefox.exe\" get Version /value`);
+                let result = await ProcessUtil.exec(`wmic datafile where name=\"C:\\\\Program Files\\\\Mozilla Firefox\\\\firefox.exe\" get Version /value`);
                 if (result.includes(`No`)) {
-                    result = await ProcessUtil.exec(`'wmic datafile where name=\"C:\\\\Program Files (x86)\\\\Mozilla Firefox\\\\firefox.exe\" get Version /value`);
+                    result = await ProcessUtil.exec(`wmic datafile where name=\"C:\\\\Program Files (x86)\\\\Mozilla Firefox\\\\firefox.exe\" get Version /value`);
                 }
                 return result.trim().substring("Version=".length).trim();
             }
