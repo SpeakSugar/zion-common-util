@@ -1,5 +1,6 @@
 import { ProcessUtil } from "./process-util";
 import { StringUtil } from "./string-util";
+import * as os from "os";
 
 export class SystemUtil {
 
@@ -32,6 +33,43 @@ export class SystemUtil {
                 return "intel";
             }
         }
+    }
+
+    static getCpuInfo() {
+        const cpus = os.cpus();
+        return {
+            length: cpus.length,
+            model: cpus[0].model,
+        };
+    }
+
+    static async getDiskInfo() {
+        try {
+            if (this.getPlatformName() == `mac`) {
+                const result = await ProcessUtil.exec(`diskutil info / | grep "Total Space"`);
+                const match = result.match(new RegExp(/\d+(\.\d+)?\sGB/))!
+                return {
+                    total: parseInt(match[0].replace(`GB`, ``)),
+                }
+            }
+            if (this.getPlatformName() == `win`) {
+                const result = await ProcessUtil.exec(`wmic logicaldisk get Size`);
+                const lines = result.trim().split(`\n`);
+                let totalSize = 0;
+                for (let i = 1; i < lines.length; i++) {
+                    const size = parseInt(lines[i].trim());
+                    if (!isNaN(size)) {
+                        totalSize += size;
+                    }
+                }
+                return {
+                    total: totalSize / (1024 * 1024 * 1024),
+                }
+            }
+        } catch (e) {
+            return `get disk info exception`;
+        }
+        return `unsupported os: ${this.getPlatformName()}`;
     }
 
     static async getPlatformVersion() {
