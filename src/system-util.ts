@@ -44,7 +44,7 @@ export class SystemUtil {
             }
             if (this.getPlatformName() == `win`) {
                 const result = await ProcessUtil.exec(`systeminfo | findstr /B /C:\"OS Name\"`);
-                return result.replace(`OS Name`, ``).trim();
+                return result.replace(`OS Name:`, ``).trim();
             }
         } catch (e) {
             return `get platform version exception`;

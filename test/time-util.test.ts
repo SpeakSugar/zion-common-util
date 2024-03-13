@@ -1,7 +1,7 @@
-import { TimeUtil } from "../src/time-util";
+import { TimeUtil } from "../src";
 
 it('format', function () {
-    console.log(TimeUtil.format(1703641828517));
+    console.log(TimeUtil.format(1709463970639));
 });
 
 it('date test', function () {
