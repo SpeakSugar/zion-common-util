@@ -128,3 +128,9 @@ it(`regex test 3`, function () {
     let s = "xxxx john.doeyyyy"
     console.log(/John[\\. ]Doe/i.test(s));
 })
+
+it('regex test 4', () => {
+    const result = `1.0 TB`
+    const match = result.match(new RegExp(/\d+(\.\d+)?\s(GB|TB)/))!
+    console.log(match[0]);
+});

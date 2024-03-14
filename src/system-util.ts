@@ -60,10 +60,13 @@ export class SystemUtil {
         try {
             if (this.getPlatformName() == `mac`) {
                 const result = await ProcessUtil.exec(`diskutil info / | grep "Total Space"`);
-                const match = result.match(new RegExp(/\d+(\.\d+)?\sGB/))!
-                return {
-                    total: parseInt(match[0].replace(`GB`, ``)),
+                const match = result.match(new RegExp(/\d+(\.\d+)?\s(GB|TB)/))!
+                if (match[0].includes(`TB`)) {
+                    return { total: parseInt(match[0].replace(`TB`, ``)) * 1024 };
+                } else {
+                    return { total: parseInt(match[0].replace(`GB`, ``)) };
                 }
+
             }
             if (this.getPlatformName() == `win`) {
                 const result = await ProcessUtil.exec(`wmic logicaldisk get Size`);

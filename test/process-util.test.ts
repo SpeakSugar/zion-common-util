@@ -1,5 +1,6 @@
 import { ProcessUtil } from "../src";
 import { exec } from "child_process";
+import * as _ from "lodash";
 
 it('process util test', async function () {
     let stdout = await ProcessUtil.exec(`pkill RingCentral XXX`);
@@ -30,4 +31,10 @@ export class AutoCmdUtil {
 
 it('autocmd exec', async function () {
     await AutoCmdUtil.exec(`pkill RingCentral`, 30e3);
+});
+
+it('option merge', () => {
+    let options = { fxxk: false };
+    options = _.merge(options, { windowsHide: true });
+    console.log(options);
 });
