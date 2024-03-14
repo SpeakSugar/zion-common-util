@@ -23,6 +23,7 @@ import { RetryUtilException } from "./exception/retry-util-exception";
 import { ProcessUtilException } from "./exception/process-util-exception";
 import { Barrier } from "./event-loop/barrier";
 import { SystemUtil } from "./system-util";
+import { CpuInfo, MemInfo, DiskInfo } from "./system-util";
 
 export {
     FileUtil,
@@ -49,5 +50,8 @@ export {
     RetryUtilException,
     ProcessUtilException,
     Barrier,
-    DeepPartial
+    DeepPartial,
+    CpuInfo,
+    MemInfo,
+    DiskInfo
 };

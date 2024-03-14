@@ -2,6 +2,19 @@ import { ProcessUtil } from "./process-util";
 import { StringUtil } from "./string-util";
 import * as os from "os";
 
+export class CpuInfo {
+    length!: number
+    model!: string
+}
+
+export class MemInfo {
+    total!: number
+}
+
+export class DiskInfo {
+    total!: number
+}
+
 export class SystemUtil {
 
     static getPlatformName() {
@@ -35,7 +48,7 @@ export class SystemUtil {
         }
     }
 
-    static getCpuInfo() {
+    static getCpuInfo(): CpuInfo {
         const cpus = os.cpus();
         return {
             length: cpus.length,
@@ -43,7 +56,7 @@ export class SystemUtil {
         };
     }
 
-    static async getDiskInfo() {
+    static async getDiskInfo(): Promise<DiskInfo | string> {
         try {
             if (this.getPlatformName() == `mac`) {
                 const result = await ProcessUtil.exec(`diskutil info / | grep "Total Space"`);
