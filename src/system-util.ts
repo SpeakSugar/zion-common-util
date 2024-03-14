@@ -76,7 +76,7 @@ export class SystemUtil {
                     }
                 }
                 return {
-                    total: totalSize / (1024 * 1024 * 1024),
+                    total: Math.round(totalSize / (1024 * 1024 * 1024))
                 }
             }
         } catch (e) {
