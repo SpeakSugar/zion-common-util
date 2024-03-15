@@ -107,6 +107,9 @@ const arch = await SystemUtil.getArch();
 const platformVersion = await SystemUtil.getPlatformVersion();
 const currentUser = await SystemUtil.currentUser();
 
+const cpuInfo = SystemUtil.getCpuInfo();
+const diskInfo = await SystemUtil.getDiskInfo();
+
 const chromeVersion = await SystemUtil.getChromeVersion();
 const chromeBetaVersion = await SystemUtil.getChromeBetaVersion();
 const edgeVersion = await SystemUtil.getEdgeVersion();
