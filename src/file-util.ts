@@ -8,13 +8,15 @@ export class FileUtil {
      * Example: "/User/downloads/xxx.exe" = await FileUtil.download("https://xxx/download/xxx.exe", "/User/downloads")
      * @param url
      * @param dir
+     * @param timeout
      * @return destPath
      */
-    static async download(url: string, dir: string): Promise<string> {
+    static async download(url: string, dir: string, timeout: number = 30e3): Promise<string> {
         let axiosResponse = await AxiosUtil.request({
             url: url,
             method: "GET",
-            responseType: "stream"
+            responseType: "stream",
+            timeout
         });
         if (!fs.existsSync(dir)) {
             fs.mkdirSync(dir, { recursive: true });
