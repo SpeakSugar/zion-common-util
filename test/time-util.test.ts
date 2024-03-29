@@ -7,3 +7,7 @@ it('format', function () {
 it('date test', function () {
     console.log(`${new Date()}`);
 });
+
+it('date test 2', function () {
+    console.log(`${Date.now().toString()}`);
+});

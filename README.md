@@ -49,6 +49,8 @@ await FileUtil.download(url, dir);
 await FileUtil.deleteFilesBefore7Days(dir);
 const isExist = await FileUtil.isExist(file);
 const files = await FileUtil.readAndSortFiles(dir);
+const isDir = await FileUtil.isDir(path);
+const result: { file: string[], dir: string[] } = await FileUtil.walkDir(dir, depth);
 ```
 
 gitlab-util

@@ -78,7 +78,7 @@ export class FileUtil {
     }
 
     /**
-     * read files from dir， order by create time
+     * read files from dir, order by create time, 这是一个不递归的方法
      * @param dir
      */
     static async readAndSortFiles(dir: string): Promise<fs.Dirent[]> {
@@ -94,4 +94,32 @@ export class FileUtil {
         return sortedFiles.map(file => file.file);
     }
 
+    static async isDir(path: string): Promise<boolean> {
+        const stat = await fs.promises.lstat(path);
+        return stat.isDirectory();
+    }
+
+    static async walkDir(dir: string,
+                             destDepth: number | undefined = undefined,
+                             curDepth: number = 1,
+                             _path: { file: string[]; dir: string[] } = { file: [], dir: [] }): Promise<{ file: string[]; dir: string[] }> {
+        const files = await fs.promises.readdir(dir);
+        for (const file of files) {
+            const filePath = path.join(dir, file);
+            const stats = await fs.promises.lstat(filePath);
+            if (stats.isDirectory()) {
+                _path.dir.push(filePath);
+                if ((destDepth != undefined && curDepth < destDepth) || destDepth == undefined) {
+                    await FileUtil.walkDir(filePath, destDepth, curDepth + 1, _path); // 递归遍历子目录，深度加一
+                }
+            } else {
+                _path.file.push(filePath);
+            }
+        }
+        if ((curDepth == destDepth) || destDepth == undefined) {
+            return _path;
+        } else {
+            throw new Error(`unknown e`);
+        }
+    }
 }

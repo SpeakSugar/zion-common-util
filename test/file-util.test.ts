@@ -19,3 +19,13 @@ it('readAndSortFiles', async function () {
 it('download', async function () {
     await FileUtil.download(`https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/116.0.5845.96/mac-x64/chromedriver-mac-x64.zip`, `~/`)
 });
+
+it('isDir', async () => {
+    console.log(await FileUtil.isDir(`/Users/jeffries.yu/Downloads`));
+    console.log(await FileUtil.isDir(`/Users/jeffries.yu/Downloads/JPT-00000-ej2td5so3ec/HistoryLog/2024-03-28T10:16:17.602+0800.log`));
+});
+
+it('walkDir', async () => {
+    console.log((await FileUtil.walkDir(`/Users/jeffries.yu/pii-check`)).file);
+    console.log((await FileUtil.walkDir(`/Users/jeffries.yu/pii-check`, 1)).file);
+});
