@@ -26,6 +26,6 @@ it('isDir', async () => {
 });
 
 it('walkDir', async () => {
-    console.log((await FileUtil.walkDir(`/Users/jeffries.yu/pii-check`)).file);
-    console.log((await FileUtil.walkDir(`/Users/jeffries.yu/pii-check`, 1)).file);
+    // console.log((await FileUtil.walkDir(`/Users/jeffries.yu/pii-check`)).file);
+    console.log((await FileUtil.walkDir(`/Users/jeffries.yu/pii-check/10.32.47.230-JPT-2869-0-d6o09bpz5q`)).file);
 });

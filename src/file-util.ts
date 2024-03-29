@@ -116,10 +116,6 @@ export class FileUtil {
                 _path.file.push(filePath);
             }
         }
-        if ((curDepth == destDepth) || destDepth == undefined) {
-            return _path;
-        } else {
-            throw new Error(`unknown e`);
-        }
+        return _path;
     }
 }
