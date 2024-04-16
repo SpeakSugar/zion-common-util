@@ -118,6 +118,9 @@ const edgeVersion = await SystemUtil.getEdgeVersion();
 const electronVersion = await SystemUtil.getElectronVersion();
 const firefoxVersion = await SystemUtil.getFirefoxVersion();
 const safariVersion = await SystemUtil.getSafariVersion();
+
+const cpuUsage = SystemUtil.getCpuUsage();
+const availableMem = SystemUtil.getAvailableMem();
 ```
 
 array-util

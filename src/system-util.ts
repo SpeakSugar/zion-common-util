@@ -1,6 +1,7 @@
 import { ProcessUtil } from "./process-util";
 import { StringUtil } from "./string-util";
 import * as os from "os";
+import * as si from "systeminformation";
 
 export class CpuInfo {
     length!: number
@@ -54,6 +55,16 @@ export class SystemUtil {
             length: cpus.length,
             model: cpus[0].model,
         };
+    }
+
+    static getCpuUsage(): string {
+        return (os.loadavg()[2] / os.cpus().length).toFixed(2);
+    }
+
+    static async getAvailableMem() {
+        const mem = await si.mem();
+        const availableMemGB = mem.available / (1024 * 1024 * 1024);
+        return availableMemGB.toFixed(2);
     }
 
     static async getDiskInfo(): Promise<DiskInfo | string> {
