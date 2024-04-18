@@ -7,7 +7,7 @@
 ## installation
 
 ```bash
-npm install zion-common-util
+npm install zion-common-utils
 ```
 
 ## usage
