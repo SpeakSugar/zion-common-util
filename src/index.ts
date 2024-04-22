@@ -8,6 +8,7 @@ import { GitlabUtil } from "./gitlab-util";
 import { ProcessUtil } from "./process-util";
 import { PromiseUtil } from "./promise-util";
 import { FuncUtil } from "./func-util";
+import { FlagUtil } from "./flag-util";
 import { RandomUtil } from "./random-util";
 import { AxiosUtil } from "./axios-util";
 import { MutexUtil } from "./mutex-util";
@@ -37,6 +38,7 @@ export {
     PromiseUtil,
     ArrayUtil,
     FuncUtil,
+    FlagUtil,
     RandomUtil,
     AxiosUtil,
     MutexUtil,

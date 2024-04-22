@@ -53,6 +53,16 @@ const isDir = await FileUtil.isDir(path);
 const result: { file: string[], dir: string[] } = await FileUtil.walkDir(dir, depth);
 ```
 
+flag-util
+
+```typescript
+import { FlagUtil } from "zion-common-utils";
+
+await FlagUtil.setFlag(`${fileName}`, `${key}`, `${value}`);
+const value = await FlagUtil.getFlag(`${fileName}`, `${key}`);
+
+```
+
 gitlab-util
 
 ```typescript
