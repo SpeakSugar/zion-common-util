@@ -30,7 +30,7 @@ export class FlagUtil {
             const obj = JSON.parse(await fs.promises.readFile(jsonFilePath, { encoding: 'utf-8' }));
             return obj[key];
         } else {
-            throw new Error(`${jsonFilePath} is not exist`);
+            return undefined;
         }
     }
 }
