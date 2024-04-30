@@ -79,6 +79,7 @@ import { PathUtil } from "zion-common-utils";
 
 PathUtil.initRootPath(path);
 PathUtil.getAbsolutePath(relativePath);
+const path = PathUtil.parseToPath(`/$HOME/test`) // path = `/Users/admin/test`
 ```
 
 promise-util
