@@ -57,8 +57,8 @@ export class SystemUtil {
         };
     }
 
-    static getCpuUsage(): string {
-        return (os.loadavg()[2] / os.cpus().length).toFixed(2);
+    static async getCpuUsage(): Promise<string> {
+        return ((await si.currentLoad()).avgLoad).toFixed(2);
     }
 
     static async getAvailableMem() {

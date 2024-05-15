@@ -19,8 +19,7 @@ it(`getSafariVersion`, async () => {
 });
 
 it(`cpu`, async () => {
-    console.log(SystemUtil.getCpuInfo());
-    console.log('CPU 负载情况:', SystemUtil.getCpuUsage());
+    console.log('CPU 负载情况:', await SystemUtil.getCpuUsage());
 });
 
 it('getDiskInfo', async () => {
