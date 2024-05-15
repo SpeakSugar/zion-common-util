@@ -10,6 +10,7 @@ import { PromiseUtil } from "./promise-util";
 import { FuncUtil } from "./func-util";
 import { FlagUtil } from "./flag-util";
 import { RandomUtil } from "./random-util";
+import { IntervalUtil } from "./interval-util";
 import { AxiosUtil } from "./axios-util";
 import { MutexUtil } from "./mutex-util";
 import { ArrayUtil } from "./array-util";
@@ -40,6 +41,7 @@ export {
     FuncUtil,
     FlagUtil,
     RandomUtil,
+    IntervalUtil,
     AxiosUtil,
     MutexUtil,
     TimeUtil,

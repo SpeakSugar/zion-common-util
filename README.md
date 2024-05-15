@@ -134,6 +134,15 @@ const cpuUsage = SystemUtil.getCpuUsage();
 const availableMem = SystemUtil.getAvailableMem();
 ```
 
+interval-util
+
+```typescript
+import { IntervalUtil } from "zion-common-utils";
+
+IntervalUtil.addInterval(() => console.log(`hello`));
+IntervalUtil.clearIntervals();
+```
+
 array-util
 
 ```typescript
