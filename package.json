@@ -1,6 +1,6 @@
 {
   "name": "zion-common-utils",
-  "version": "1.4.7",
+  "version": "1.4.8",
   "main": "./zion-commonjs/index.js",
   "types": "./zion-commonjs/index.d.ts",
   "exports": {

@@ -25,18 +25,34 @@ export class FileUtil {
             url.lastIndexOf("\/"), url.length
         )}`;
         return new Promise((resolve, reject) => {
+            const timeoutId = setTimeout(() => {
+                error = new Error(`Download of ${url} 120s timed out`);
+                writer.close();
+                reject(error);
+            }, 120e3);
+
             const writer = fs.createWriteStream(destPath);
             axiosResponse.data.pipe(writer, { end: true });
             let error: Error;
+            axiosResponse.data.on(`error`, (err: Error) => {
+                error = err;
+                writer.close();
+                clearTimeout(timeoutId);
+                reject(err);
+            })
             writer.on('error', err => {
                 error = err;
                 writer.close();
+                clearTimeout(timeoutId);
                 reject(err);
             });
             writer.on('close', () => {
+                clearTimeout(timeoutId);
                 if (!error) {
                     console.log(`\n> download ${url} to\n ${path.resolve(dir)} success\n`);
                     resolve(destPath);
+                } else {
+                    reject(error);
                 }
             });
         });
