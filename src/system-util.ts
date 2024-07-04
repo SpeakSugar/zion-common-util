@@ -58,7 +58,12 @@ export class SystemUtil {
     }
 
     static async getCpuUsage(): Promise<string> {
-        return ((await si.currentLoad()).avgLoad).toFixed(2);
+        if (this.getPlatformName() == `win`) {
+            const stdout = await ProcessUtil.exec(`wmic cpu get loadpercentage`);
+            return (parseInt(stdout.split(`\n`)[1].trim()) / 100).toFixed(2);
+        } else {
+            return ((await si.currentLoad()).avgLoad).toFixed(2);
+        }
     }
 
     static async getAvailableMem() {

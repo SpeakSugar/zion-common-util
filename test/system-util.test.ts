@@ -1,5 +1,4 @@
 import { SystemUtil } from "../src";
-import * as si from "systeminformation";
 import * as os from "os";
 
 it(`getPlatformVersion`, async () => {
@@ -33,3 +32,4 @@ it(`mem`, async () => {
     const freeMemoryGB = freeMemory / (1024 * 1024 * 1024);
     console.log(`系统可用内存：${freeMemoryGB.toFixed(2)} GB`);
 });
+
