@@ -1,4 +1,4 @@
-import { SystemUtil } from "../src";
+import { ProcessUtil, SystemUtil } from "../src";
 import * as os from "os";
 
 it(`getPlatformVersion`, async () => {
@@ -19,6 +19,13 @@ it(`getSafariVersion`, async () => {
 
 it(`cpu`, async () => {
     console.log('CPU 负载情况:', await SystemUtil.getCpuUsage());
+});
+
+it(`cpu 2`, async () => {
+    const stdout = await ProcessUtil.exec(`top -l 1 | grep "CPU usage"`);
+    const match = stdout.match(/\d+(\.\d+)?%/);
+    console.log((parseFloat(match![0]) / 100).toFixed(2));
+    console.log((parseFloat(undefined!)))
 });
 
 it('getDiskInfo', async () => {

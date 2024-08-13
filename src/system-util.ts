@@ -62,7 +62,9 @@ export class SystemUtil {
             const stdout = await ProcessUtil.exec(`wmic cpu get loadpercentage`);
             return (parseInt(stdout.split(`\n`)[1].trim()) / 100).toFixed(2);
         } else {
-            return ((await si.currentLoad()).avgLoad).toFixed(2);
+            const stdout = await ProcessUtil.exec(`top -l 1 | grep "CPU usage"`);
+            const match = stdout.match(/\d+(\.\d+)?%/);
+            return (parseFloat(match![0]) / 100).toFixed(2);
         }
     }
 
