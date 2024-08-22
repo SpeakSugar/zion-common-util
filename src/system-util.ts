@@ -1,5 +1,6 @@
 import { ProcessUtil } from "./process-util";
 import { StringUtil } from "./string-util";
+import * as _ from "lodash";
 import * as os from "os";
 import * as si from "systeminformation";
 
@@ -31,7 +32,7 @@ export class SystemUtil {
         const platform = process.platform;
         if (platform == "win32") {
             try {
-                let result = await ProcessUtil.exec(`wmic cpu get Name`);
+                let result = await ProcessUtil.exec(`powershell -Command "Get-CimInstance -ClassName Win32_Processor | Select-Object -Property Name"`);
                 if (result.toLowerCase().includes(`arm`) || result.toLowerCase().includes(`snapdragon`)) {
                     return "arm";
                 } else {
@@ -59,8 +60,13 @@ export class SystemUtil {
 
     static async getCpuUsage(): Promise<string> {
         if (this.getPlatformName() == `win`) {
-            const stdout = await ProcessUtil.exec(`wmic cpu get loadpercentage`);
-            return (parseInt(stdout.split(`\n`)[1].trim()) / 100).toFixed(2);
+            const stdout = await ProcessUtil.exec(`powershell -Command "Get-CimInstance -ClassName Win32_Processor | Select-Object -Property LoadPercentage"`);
+            const result = parseInt(stdout.split(`\n`)?.[2].trim());
+            if (result) {
+                return (result / 100).toFixed(2);
+            } else {
+                return Number(0).toFixed(2);
+            }
         } else {
             const stdout = await ProcessUtil.exec(`top -l 1 | grep "CPU usage"`);
             const match = stdout.match(/\d+(\.\d+)?%/);
@@ -87,7 +93,7 @@ export class SystemUtil {
 
             }
             if (this.getPlatformName() == `win`) {
-                const result = await ProcessUtil.exec(`wmic logicaldisk get Size`);
+                const result = await ProcessUtil.exec(`powershell -Command "Get-CimInstance -ClassName Win32_LogicalDisk | Select-Object -Property Size"`);
                 const lines = result.trim().split(`\n`);
                 let totalSize = 0;
                 for (let i = 1; i < lines.length; i++) {
@@ -136,11 +142,11 @@ export class SystemUtil {
                 return result.trim().substring("Google Chrome".length).trim();
             }
             if (this.getPlatformName() == `win`) {
-                let result = await ProcessUtil.exec(`wmic datafile where name=\"C:\\\\Program Files\\\\Google\\\\Chrome\\\\Application\\\\chrome.exe\" get Version /value`);
-                if (result.includes(`No`)) {
-                    result = await ProcessUtil.exec(`wmic datafile where name=\"C:\\\\Program Files (x86)\\\\Google\\\\Chrome\\\\Application\\\\chrome.exe\" get Version /value`);
+                let result = await ProcessUtil.exec(`powershell -Command \"Get-CimInstance CIM_DataFile -Filter \\\"Name='C:\\\\Program Files\\\\Google\\\\Chrome\\\\Application\\\\chrome.exe'\\\" | Select-Object Version\"`);
+                if (_.isEmpty(result?.trim())) {
+                    result = await ProcessUtil.exec(`powershell -Command \"Get-CimInstance CIM_DataFile -Filter \\\"Name='C:\\\\Program Files (x86)\\\\Google\\\\Chrome\\\\Application\\\\chrome.exe'\\\" | Select-Object Version\"`);
                 }
-                return result.trim().substring("Version=".length).trim();
+                return result.split(`\n`)?.[2].trim();
             }
         } catch (e) {
             return `get chrome version exception`;
@@ -155,11 +161,11 @@ export class SystemUtil {
                 return result.trim().substring("Google Chrome".length).trim();
             }
             if (this.getPlatformName() == `win`) {
-                let result = await ProcessUtil.exec(`wmic datafile where name=\"C:\\\\Program Files\\\\Google\\\\Chrome Beta\\\\Application\\\\chrome.exe\" get Version /value`);
-                if (result.includes(`No`)) {
-                    result = await ProcessUtil.exec(`wmic datafile where name=\"C:\\\\Program Files (x86)\\\\Google\\\\Chrome Beta\\\\Application\\\\chrome.exe\" get Version /value`);
+                let result = await ProcessUtil.exec(`powershell -Command \"Get-CimInstance CIM_DataFile -Filter \\\"Name='C:\\\\Program Files\\\\Google\\\\Chrome Beta\\\\Application\\\\chrome.exe'\\\" | Select-Object Version\"`);
+                if (_.isEmpty(result?.trim())) {
+                    result = await ProcessUtil.exec(`powershell -Command \"Get-CimInstance CIM_DataFile -Filter \\\"Name='C:\\\\Program Files (x86)\\\\Google\\\\Chrome Beta\\\\Application\\\\chrome.exe'\\\" | Select-Object Version\"`);
                 }
-                return result.trim().substring("Version=".length).trim();
+                return result.split(`\n`)?.[2].trim();
             }
         } catch (e) {
             return `get chrome beta version exception`;
@@ -189,11 +195,11 @@ export class SystemUtil {
                 return (await ProcessUtil.exec(`/usr/libexec/PlistBuddy -c "Print :CFBundleShortVersionString" /Applications/RingCentral.app/Contents/Info.plist`)).trim();
             }
             if (this.getPlatformName() == `win`) {
-                let result = await ProcessUtil.exec(`wmic datafile where name=\"C:\\\\Program Files\\\\RingCentral\\\\RingCentral.exe\" get Version /value`);
-                if (result.includes(`No`)) {
-                    result = await ProcessUtil.exec(`wmic datafile where name=\"C:\\\\Program Files (x86)\\\\RingCentral\\\\RingCentral.exe\" get Version /value`);
+                let result = await ProcessUtil.exec(`powershell -Command \"Get-CimInstance CIM_DataFile -Filter \\\"Name='C:\\\\Program Files\\\\RingCentral\\\\RingCentral.exe'\\\" | Select-Object Version\"`);
+                if (_.isEmpty(result?.trim())) {
+                    result = await ProcessUtil.exec(`powershell -Command \"Get-CimInstance CIM_DataFile -Filter \\\"Name='C:\\\\Program Files (x86)\\\\RingCentral\\\\RingCentral.exe'\\\" | Select-Object Version\"`);
                 }
-                return result.trim().substring("Version=".length).trim();
+                return result.split(`\n`)?.[2].trim();
             }
         } catch (e) {
             return `get electron version exception`;
@@ -208,11 +214,11 @@ export class SystemUtil {
                 return result.trim().substring("Mozilla Firefox".length).trim();
             }
             if (this.getPlatformName() == `win`) {
-                let result = await ProcessUtil.exec(`wmic datafile where name=\"C:\\\\Program Files\\\\Mozilla Firefox\\\\firefox.exe\" get Version /value`);
-                if (result.includes(`No`)) {
-                    result = await ProcessUtil.exec(`wmic datafile where name=\"C:\\\\Program Files (x86)\\\\Mozilla Firefox\\\\firefox.exe\" get Version /value`);
+                let result = await ProcessUtil.exec(`powershell -Command \"Get-CimInstance CIM_DataFile -Filter \\\"Name='C:\\\\Program Files\\\\Mozilla Firefox\\\\firefox.exe'\\\" | Select-Object Version\"`);
+                if (_.isEmpty(result?.trim())) {
+                    result = await ProcessUtil.exec(`powershell -Command \"Get-CimInstance CIM_DataFile -Filter \\\"Name='C:\\\\Program Files (x86)\\\\Mozilla Firefox\\\\firefox.exe'\\\" | Select-Object Version\"`);
                 }
-                return result.trim().substring("Version=".length).trim();
+                return result.split(`\n`)?.[2].trim();
             }
         } catch (e) {
             return `get firefox version exception`;
