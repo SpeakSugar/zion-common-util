@@ -146,7 +146,7 @@ export class SystemUtil {
                 if (_.isEmpty(result?.trim())) {
                     result = await ProcessUtil.exec(`powershell -Command \"Get-CimInstance CIM_DataFile -Filter \\\"Name='C:\\\\Program Files (x86)\\\\Google\\\\Chrome\\\\Application\\\\chrome.exe'\\\" | Select-Object Version\"`);
                 }
-                return result.split(`\n`)?.[2].trim();
+                return result.split(`\n`)?.[3].trim();
             }
         } catch (e) {
             return `get chrome version exception`;
@@ -165,7 +165,7 @@ export class SystemUtil {
                 if (_.isEmpty(result?.trim())) {
                     result = await ProcessUtil.exec(`powershell -Command \"Get-CimInstance CIM_DataFile -Filter \\\"Name='C:\\\\Program Files (x86)\\\\Google\\\\Chrome Beta\\\\Application\\\\chrome.exe'\\\" | Select-Object Version\"`);
                 }
-                return result.split(`\n`)?.[2].trim();
+                return result.split(`\n`)?.[3].trim();
             }
         } catch (e) {
             return `get chrome beta version exception`;
@@ -199,7 +199,7 @@ export class SystemUtil {
                 if (_.isEmpty(result?.trim())) {
                     result = await ProcessUtil.exec(`powershell -Command \"Get-CimInstance CIM_DataFile -Filter \\\"Name='C:\\\\Program Files (x86)\\\\RingCentral\\\\RingCentral.exe'\\\" | Select-Object Version\"`);
                 }
-                return result.split(`\n`)?.[2].trim();
+                return result.split(`\n`)?.[3].trim();
             }
         } catch (e) {
             return `get electron version exception`;
@@ -218,7 +218,7 @@ export class SystemUtil {
                 if (_.isEmpty(result?.trim())) {
                     result = await ProcessUtil.exec(`powershell -Command \"Get-CimInstance CIM_DataFile -Filter \\\"Name='C:\\\\Program Files (x86)\\\\Mozilla Firefox\\\\firefox.exe'\\\" | Select-Object Version\"`);
                 }
-                return result.split(`\n`)?.[2].trim();
+                return result.split(`\n`)?.[3].trim();
             }
         } catch (e) {
             return `get firefox version exception`;
