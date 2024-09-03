@@ -1,0 +1,1 @@
+- jest 无法执行当 tsconfig.json 配置 "allowSyntheticDefaultImports": true
