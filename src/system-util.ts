@@ -61,7 +61,7 @@ export class SystemUtil {
     static async getCpuUsage(): Promise<string> {
         if (this.getPlatformName() == `win`) {
             const stdout = await ProcessUtil.exec(`powershell -Command "Get-CimInstance -ClassName Win32_Processor | Select-Object -Property LoadPercentage"`);
-            const result = parseInt(stdout.split(`\n`)?.[2].trim());
+            const result = parseInt(stdout.split(`\n`)?.[3].trim());
             if (result) {
                 return (result / 100).toFixed(2);
             } else {
