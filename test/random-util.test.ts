@@ -11,3 +11,9 @@ it('number', function () {
     console.log(RandomUtil.number(2, 255));
     console.log(`cost ${Date.now() - startTime} ms`); // 生成速度在 10 ms 内
 });
+
+it('ip', function () {
+    const startTime = Date.now();
+    console.log(RandomUtil.ip());
+    console.log(`cost ${Date.now() - startTime} ms`); // 生成速度在 10 ms 内
+});

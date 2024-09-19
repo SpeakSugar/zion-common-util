@@ -8,4 +8,8 @@ export class RandomUtil {
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 
+    public static ip(): string {
+        return `1.1.1.${RandomUtil.number(2, 255)}`;
+    }
+
 }
