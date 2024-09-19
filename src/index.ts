@@ -26,6 +26,7 @@ import { ProcessUtilException } from "./exception/process-util-exception";
 import { Barrier } from "./event-loop/barrier";
 import { SystemUtil } from "./system-util";
 import { CpuInfo, MemInfo, DiskInfo } from "./system-util";
+import { CronUtil } from "./cron-util";
 
 export {
     FileUtil,
@@ -46,6 +47,7 @@ export {
     MutexUtil,
     TimeUtil,
     SystemUtil,
+    CronUtil,
     SingletonFactory,
     FileUtilException,
     NetUtilException,
