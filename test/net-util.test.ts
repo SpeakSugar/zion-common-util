@@ -6,6 +6,7 @@ it('getLocalIp', async function () {
 
 it('isConnected', async function () {
     console.log(await NetUtil.isConnected(`https://www.baidu.com`));
+    console.log(await NetUtil.isConnected([`https://www.xxxxxx.com`, "https://www.yyyyy.com"]));
 }, 30000);
 
 it('url', async function () {
