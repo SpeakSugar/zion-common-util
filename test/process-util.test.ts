@@ -11,6 +11,10 @@ it('install sf', async function () {
     await ProcessUtil.exec(`sudo npm install -g selenium-federation-server --registry=http://nexus3-xmn02.lab.nordigy.ru/repository/npm-group/`);
 }, 400e3);
 
+it('timeout test', async function () {
+    await ProcessUtil.exec(`sleep 5 && echo hello`, { timeout: 2e3 });
+}, 400e3);
+
 export class AutoCmdUtil {
 
     public static async exec(script: string, timeout: number): Promise<{ stdout: string, stderr: string }> {

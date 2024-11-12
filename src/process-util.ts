@@ -15,7 +15,11 @@ export class ProcessUtil {
             }
             return stdout.toString();
         } catch (e) {
-            throw new ProcessUtilException(`${command} failed, ${e.message}`, e);
+            if (e.killed) {
+                throw new ProcessUtilException(`${command} failed, timeout = ${options.timeout} ms`, e);
+            } else {
+                throw new ProcessUtilException(`${command} failed, ${e.message}`, e);
+            }
         }
     }
 
