@@ -1,7 +1,20 @@
 import { TimeUtil } from "../src";
+import * as moment from 'moment';
 
 it('format', function () {
-    console.log(TimeUtil.format(1711705438835));
+    console.log(TimeUtil.format(1733302943 * 1000));
+});
+
+it(`getStampRangeBeforeNDays`, () => {
+    const stampRange = TimeUtil.getStampRangeBeforeNDays(1);
+    console.log({
+        start: TimeUtil.format(stampRange.startTimestamp, `UTC`),
+        end: TimeUtil.format(stampRange.endTimestamp, `UTC`),
+    })
+});
+
+it(`spent`, () => {
+    console.log(1733302943 / (60 * 60 * 1000));
 });
 
 it('date test', function () {
@@ -17,3 +30,7 @@ it('date parse', function () {
     console.log(timestamp);
 
 });
+
+it('moment test', async () => {
+    console.log(moment().subtract(moment().day(), 'days'))
+})
