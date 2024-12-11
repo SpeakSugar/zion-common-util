@@ -2,8 +2,8 @@ import { FileUtil } from "../src";
 import { assignWith } from "lodash";
 import { homedir } from "os";
 
-it('deleteFilesBefore7Days', async function () {
-    await FileUtil.deleteFilesBefore7Days('/Users/jeffries.yu/selenium-federation-server/logs');
+it('deleteFilesBeforeNDays', async function () {
+    await FileUtil.deleteFilesBeforeNDays('/Users/jeffries.yu/selenium-federation-server/logs');
 }, 30000);
 
 it('isExist', async function () {

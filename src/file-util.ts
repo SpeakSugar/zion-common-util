@@ -59,17 +59,18 @@ export class FileUtil {
     }
 
     /**
-     * Example: await FileUtil.deleteFilesBefore7Days('/Users/jeffries.yu/selenium-federation-server/logs')
+     * Example: await FileUtil.deleteFilesBeforeNDays('/Users/jeffries.yu/selenium-federation-server/logs')
      * @param dir
+     * @param days
      */
-    static async deleteFilesBefore7Days(dir: string) {
+    static async deleteFilesBeforeNDays(dir: string, days: number = 7) {
         let files: string[];
         try {
             files = await fs.promises.readdir(dir);
         } catch (e) {
             files = [];
         }
-        const cutoffTime = Date.now() - 7 * 24 * 60 * 60 * 1000; // 7天前的时间戳
+        const cutoffTime = Date.now() - days * 24 * 60 * 60 * 1000; // 7天前的时间戳
         for (const file of files) {
             const filePath = path.join(dir, file);
             const stats = await fs.promises.stat(filePath);
