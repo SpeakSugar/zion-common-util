@@ -1,6 +1,7 @@
 import * as fs from "fs";
 import * as path from "path";
 import { AxiosUtil } from "./axios-util";
+import { FuncUtil } from "./func-util";
 
 export class FileUtil {
 
@@ -75,12 +76,12 @@ export class FileUtil {
             const filePath = path.join(dir, file);
             const stats = await fs.promises.stat(filePath);
             if (stats.mtime.getTime() < cutoffTime) {
-                await fs.promises.rm(filePath, {
+                await FuncUtil.ignoreError(async () => await fs.promises.rm(filePath, {
                     recursive: true,
                     force: true,
                     maxRetries: 3,
                     retryDelay: 2e3
-                });
+                }));
             }
         }
     }
