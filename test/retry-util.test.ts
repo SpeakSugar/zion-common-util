@@ -1,4 +1,5 @@
 import { RetryUtil } from "../src";
+import * as log4js from "log4js";
 
 it('retry test', async () => {
     const p = new Promise<void>(resolve => setTimeout(() => {
@@ -10,4 +11,9 @@ it('retry test', async () => {
         void p
     });
     console.log(`end`);
+});
+
+// 如果没有初始化, 就不会输出日志
+it('log4js', async () => {
+    log4js.getLogger().info(`xxx`);
 });
