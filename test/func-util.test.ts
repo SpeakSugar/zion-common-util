@@ -18,3 +18,12 @@ it(`await debug`, async () => {
 
     await asyncF();
 })
+
+it(`this test`, () => {
+    function xxx() {
+        // @ts-ignore
+        console.log(this.xiaoming);
+    }
+
+    xxx();
+})
