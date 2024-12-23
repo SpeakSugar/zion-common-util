@@ -5,6 +5,11 @@ it('string util test', async function () {
     console.log(s)
 }, 30000);
 
+it('substringToFirstChar', async function () {
+    let s = StringUtil.substringToFirstChar("iuuccicon", "icon");
+    console.log(s)
+}, 30000);
+
 it('regex test', function () {
     const text = "some text with numbers 123 and 456";
     const regex = / [0-9]+/g;

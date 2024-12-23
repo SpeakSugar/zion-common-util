@@ -1,5 +1,6 @@
 import { JsonUtil } from "../src";
 import { PromiseUtil } from "../src";
+import axios from "axios";
 
 it(`undefined test`, () => {
     const s: any = undefined;
@@ -26,4 +27,34 @@ it(`this test`, () => {
     }
 
     xxx();
+})
+
+it(`exception test`, async () => {
+
+    class A {
+        static async parentFunc() {
+            this.sonFunc()
+        }
+
+        static async sonFunc() {
+            throw new Error("son E")
+        }
+    }
+
+    await A.parentFunc();
+});
+
+it(`axios exception test`, async () => {
+
+    class A {
+        static async parentFunc() {
+            await this.sonFunc()
+        }
+
+        static async sonFunc() {
+            await axios.get(`http//:1.1.1.3:4444/xxx`)
+        }
+    }
+
+    await A.parentFunc();
 })
