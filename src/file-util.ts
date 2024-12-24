@@ -2,6 +2,7 @@ import * as fs from "fs";
 import * as path from "path";
 import { AxiosUtil } from "./axios-util";
 import { FuncUtil } from "./func-util";
+import { PathUtil } from "./path-util";
 
 export class FileUtil {
 
@@ -19,6 +20,7 @@ export class FileUtil {
             responseType: "stream",
             timeout
         });
+        dir = PathUtil.parseToPath(dir);
         if (!fs.existsSync(dir)) {
             fs.mkdirSync(dir, { recursive: true });
         }
