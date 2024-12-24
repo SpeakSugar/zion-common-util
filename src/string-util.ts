@@ -6,11 +6,19 @@ export class StringUtil {
      * @param char
      */
     public static substringToLastChar(origin: string, char: string): string {
-        return origin.substring(0, origin.lastIndexOf(char));
+        if (origin.includes(char)) {
+            return origin.substring(0, origin.lastIndexOf(char));
+        } else {
+            return origin;
+        }
     }
 
     public static substringToFirstChar(origin: string, char: string) {
-        return origin.substring(0, origin.indexOf(char));
+        if (origin.includes(char)) {
+            return origin.substring(0, origin.indexOf(char));
+        } else {
+            return origin;
+        }
     }
 
     /**
