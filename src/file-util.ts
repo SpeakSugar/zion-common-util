@@ -20,7 +20,6 @@ export class FileUtil {
             responseType: "stream",
             timeout
         });
-        dir = PathUtil.parseToPath(dir);
         if (!fs.existsSync(dir)) {
             fs.mkdirSync(dir, { recursive: true });
         }
